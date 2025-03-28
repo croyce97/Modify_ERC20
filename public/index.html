@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa phí giao dịch</title>
+</head>
+<body>
+    <h2>Thay đổi phí giao dịch</h2>
+    <input type="number" id="feeInput" min="0" max="100" step="1" placeholder="Nhập phí (0-100)">
+    <button onclick="updateFee()">Cập nhật phí</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function updateFee() {
+            const fee = document.getElementById("feeInput").value;
+            console.log(`🔹 Giá trị nhập: ${fee}`);
+            
+            if (fee >= 0 && fee <= 100) {
+                console.log("🔹 Gửi yêu cầu cập nhật phí...");
+                setFeePercent(fee);
+            } else {
+                console.error("❌ Giá trị không hợp lệ!");
+                alert("Vui lòng nhập giá trị từ 0 đến 100.");
+            }
+        }
+    </script>
+</body>
+</html>
